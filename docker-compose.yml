@@ -32,7 +32,7 @@ services:
     # База данных
     storage54.db.postgresql:
         build:
-            context: ./servers/postgresql
+            context: ./services/postgresql
             dockerfile: Dockerfile
         volumes:
             - ./volumes/db/postgresql:/var/lib/postgresql
@@ -52,7 +52,7 @@ services:
     # Redis сервер для обработки очередей
     storage54.db.redis:
         build:
-            context: ./servers/redis
+            context: ./services/redis
             dockerfile: Dockerfile
         volumes:
             - ./volumes/redis:/data
@@ -68,10 +68,10 @@ services:
     # Он принимает запросы и передает их соответствующему сервису
     storage54.nginx:
         build:
-            context: ./servers/nginx
+            context: ./services/nginx
             dockerfile: Dockerfile
         volumes:
-            - ./servers/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+            - ./services/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
             - ./volumes/nginx/log:/var/log/nginx
         ports:
             - "80:80"
