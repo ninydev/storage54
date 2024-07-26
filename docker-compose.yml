@@ -1,7 +1,7 @@
 version: '3'
 services:
 
-    front.admin:
+    storage54.front.admin:
         build: ./front/admin
         volumes:
             - ./front/admin/src:/usr/src/app
@@ -15,7 +15,7 @@ services:
         env_file:
             - .env
 
-    front.public:
+    storage54.front.public:
         build: ./front/public
         volumes:
             - ./front/public/src:/usr/src/app
@@ -39,7 +39,7 @@ services:
         ports:
             - "5432:5432"
         environment:
-            - NAME=db.postgresql
+            - NAME=storage54.db.postgresql
         env_file:
             -   ./.env
         extra_hosts:
